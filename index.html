@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bako Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: 'Geologica', sans-serif;
+    }
+    .container {
+      position: relative;
+      text-align: center;
+      z-index: 2;
+    }
+    .circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 50%;
+      filter: blur(20px);
+      transform: translate(-50%, -50%);
+      animation: pulse 1s infinite alternate;
+    }
+    .purple {
+      background: rgba(128, 0, 128, 0.5);
+      width: 200px;
+      height: 200px;
+    }
+    .blue {
+      background: rgba(0, 0, 255, 0.5);
+      width: 250px;
+      height: 250px;
+      animation-delay: 0.5s;
+    }
+    @keyframes pulse {
+      0% { transform: translate(-50%, -50%) scale(1); }
+      100% { transform: translate(-50%, -50%) scale(1.2); }
+    }
+    h1 {
+      color: white;
+      font-size: 48px;
+      margin: 0;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      background: white;
+      color: black;
+      border: none;
+      border-radius: 60px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    button:hover {
+      transform: scale(1.05);
+    }
+    #video {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 3;
+    }
+  </style>
+</head>
+<body>
+  <div class="circle purple"></div>
+  <div class="circle blue"></div>
+  <div class="container">
+    <h1>BakoStore-инновации</h1>
+    <button onclick="playVideo()">В магазин</button>
+  </div>
+  <video id="video" src="video.mp4" autoplay loop></video>
+  <script>
+    function playVideo() {
+      const video = document.getElementById('video');
+      const container = document.querySelector('.container');
+      video.style.display = 'block';
+      video.volume = 1.0;
+      video.play();
+      container.style.display = 'none';
+      document.querySelectorAll('.circle').forEach(circle => circle.style.display = 'none');
+    }
+  </script>
+</body>
+</html>

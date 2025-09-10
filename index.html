@@ -91,6 +91,7 @@
       const container = document.querySelector('.container');
       video.style.display = 'block';
       video.volume = 1.0;
+      video.currentTime = 2; // Start video at 2 seconds
       video.play();
       container.style.display = 'none';
       document.querySelectorAll('.circle').forEach(circle => circle.style.display = 'none');
